@@ -1,7 +1,7 @@
-from,to,relationship,time 
-bpa,pb,,1949-1950
-bpa,sk,,2025-now
-bpa,fk,,1952-1955
-bpa,ca,,1969-1972
-bpa,rw,,1972-1973
-bmw,ms,,
+from,to
+bpa,pb
+bpa,sk
+bpa,fk
+bpa,ca
+bpa,rw
+bmw,ms
