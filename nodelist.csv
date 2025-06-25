@@ -1,10 +1,10 @@
-id,name,sex,term of office,medium,party,type,prior role,after role,lobby
-bmv,Bundesministerium für Verteidigung,NA,NA,NA,NA,2,NA,NA,
-bpa,Bundespresseamt,NA,NA,NA,NA,2,NA,NA,
-pb,Paul Bourdin,1,1949-1950,Deutsche Allgemeine Zeitung ,non-partisan,1,journalist,editor in chief ,
-sk,Stefan Kornelius,1,2025-now,Süddeutsche Zeitung ,non-partisan,1,journalist,NA,
-fk,Felix von Eckardt,1,1952-1955,Münchner Neuesten Zeitung ,CDU,1,journalist,secretary of state,
-kh,Karl-Günther von Hase,1,1962-1967,ZDF,CDU,1,general staff officer,broadcasting director ,
-ca,Conrad Ahlers ,1,1969-1972,Der Spiegel,SPD,1,journalist,deputy ,
-ms,Michael Stempfle,1,,ARD,,,,,
-rw,Rüdiger von Wechmar,1,1973-1974,ZDF,FDP,1,journalist,ambassador,
+id,name,sex,term of office,medium,party,type,prior role,after role
+bmv,Bundesministerium für Verteidigung,NA,NA,NA,NA,2,NA,NA
+bpa,Bundespresseamt,NA,NA,NA,NA,2,NA,NA
+pb,Paul Bourdin,1,1949-1950,Deutsche Allgemeine Zeitung ,NA,1,journalist,editor in chief 
+sk,Stefan Kornelius,1,2025-now,Süddeutsche Zeitung ,NA,1,journalist,NA
+fk,Felix von Eckardt,1,1952-1955,Münchner Neuesten Zeitung ,CDU,1,journalist,secretary of state
+kh,Karl-Günther von Hase,1,1962-1967,ZDF,CDU,1,general staff officer,broadcasting director 
+ca,Conrad Ahlers ,1,1969-1972,Der Spiegel,SPD,1,journalist,deputy 
+ms,Michael Stempfle,1,NA,ARD,NA,1,NA,NA
+rw,Rüdiger von Wechmar,1,1973-1974,ZDF,FDP,1,journalist,ambassador
