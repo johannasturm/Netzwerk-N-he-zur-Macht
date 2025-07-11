@@ -9,7 +9,7 @@ Datenerhebung und Datenbereinigung
 Abgabe Tidygraph-Objekt im Markdown Dokument mit Link auf Github
 
 01./02. Oktober 2025:
-Blocktage 
+Blocktage
 
 Januar/Februar 2025:
 Bericht zum Projekt und Edit-Beitrag
