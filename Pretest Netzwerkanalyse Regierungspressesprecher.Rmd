@@ -1,0 +1,142 @@
+---
+title: "Netzwerk Nähe zur Macht"
+author: "Johanna Sturm"
+date: "2025-06-24"
+output: html_document
+---
+
+
+```{r unsere Kürzel}
+Pretest / Netzwerk von:
+
+Nicola Harrer (nh107)
+Jana Sajin (js510)
+Saskia Moritz (sm277)
+Johanna Sturm (js514)
+
+```
+
+```{r  Link zum Github }
+
+https://github.com/johannasturm/Netzwerk-N-he-zur-Macht
+
+dort sind Edge - und Nodelist und das Codebuch. 
+
+
+```
+
+```{r Thema }
+
+ Thema
+Karrierenetzwerk: Wechsel von Journalist*innen in Regierungs-PR und Lobbyarbeit. Wir wollen das Phänomen, dass Journalisten nach ihrer Arbeit oft als Regierungssprecher oder Pressesprecher für verschiedene Ministerien arbeiten, analysieren und herausfinden, ob es bestimmte Cluster und Machtzentren gibt sowie ob der Drehtür-Effekt vorliegt. Thema hat große Relevanz, da solche Seitenwechsel von Journalisten, wenn überhaupt, als Randnotiz in der Öffentlichkeit abgetan werden.
+
+
+```
+
+
+
+```{r Fragestellung }
+
+ Fragestellung/Arbeitshypothese:
+  
+Wie verlaufen Karrierenetzwerke von Journalist*innen, die in Regierungs-PR oder Lobbyarbeit wechseln, und welche zentralen Akteure, Organisationen und Übergangsmuster lassen sich identifizieren? 
+
+Unterfragen: Welche Medienhäuser und Institutionen sind besonders häufig an Karrieren beteiligt, die zwischen Journalismus und Regierungskommunikation verlaufen? & Gibt es „Drehtür-Akteure“, die mehrfach zwischen PR und Journalismus wechseln?
+
+Arbeitshypothese: Wir gehen davon aus, dass dieser Wechsel nicht zufällig geschieht, sondern entlang bestehender Netzwerkstrukturen zwischen bestimmten Medienhäusern, Regierungsinstitutionen und Lobbyismus Verbänden.
+
+
+  
+```
+
+
+```{r Literatur }
+
+
+Literaturübersicht: Forschungsstand / vergleichbare Studien (mindestens 5 ähnliche)
+Artikel / Videos: 
+
+
+Artikel: Von Drehtüren und Seitenwechslern https://mmm.verdi.de/meinung/von-drehtueren-und-seitenwechslern-102801 Seit gestern hat Deutschland eine neue Bundesregierung und einige prominente Namen der künftigen Mannschaft von Bundeskanzler Friedrich Merz kommen aus dem Journalismus. Seitenwechsel als Sprecher*innen oder Redenschreiber zum Beispiel für Politiker*innen sind reizvoll für beide Parteien. Journalisten treibt möglicherweise der Ehrgeiz an, nicht nur über politische Vorgänge zu berichten, sondern mal direkt im politischen Apparat zu arbeiten
+
+Drehtür ins Kanzleramt: Wenn Journalisten zu Politikern werden 
+https://www.neuer-weg.com/media/26088 Video
+Nähe zur Macht https://www.telepolis.de/features/Naehe-zur-Macht-Wenn-Spitzenjournalisten-Regierungssprecher-werden-7470431.html?seite=all
+
+Bücher: 
+Journalismusforschung https://www.nomos-elibrary.de/de/10.5771/9783845271422/journalismusforschung
+Siegfried Weischberg (2006) S. 346 
+Der Journalismus ist relativ schlecht bezahlt und viele Journalisten müssen aufgrund der finanziellen Lage den Beruf wechseln : „Doch viele Journalisten – Personen, die sich so nennen, die einschlägig ausgebildet sind und/oder einer Journalistenorganisation angehören – arbeiten schon heute weniger im Journalismus als in der PR, in der Werbung, im Marketing oder in ganz anderen Branchen, weil sie vom Journalismus allein nicht leben können.“ S.346
+Das Arbeitsfeld hat sich stark verändern und viele wollen den neuen und modernen Journalismus nicht betreiben : „Andererseits gibt es Leute, die vom Journalismus gar nicht leben wollen oder müssen, sondern sich als Publizisten betätigen – mit Beiträgen, die mit ihrem Gemisch aus Information und Meinung, aus Fakten und Fiktionen eher an den schriftstellerischen Journalismus des späten 18. und frühen 19. Jahrhunderts erinnern als an die rationellen Darstellungsformen des modernen redaktionellen Journalismus.“ S.346
+„Schon Mitte der 1990er Jahre konstatierten die amerikanischen Kommunikationswissenschaftler David H. Weaver und G. Cleveland Wilhoit in ihrer repräsentativen Studie über U.S.-Journalisten, der Journalismus befinde sich am Ende einer Ära.“
+
+```
+
+
+```{rDatenzugang }
+
+Datenzugang durch Wikipedia
+Webseite der Bundesregierung 
+
+```
+
+
+```{r Probleme und Herausforderungen}
+
+Mögliche Probleme und Herausforderungen:
+  
+- Bestimmte Eingrenzung von Knoten (Ob Medien, die davor gearbeitet haben, auch Knoten sein sollen, Auch Personen, die von PR zu Journalismus wechseln?)
+- Fehlende Studien dazu 
+- Datenzugang könnte auf lange Zeit schwierig werden
+
+```
+
+```{r Netzwerk einlesen}
+
+
+# Programmbibliothek laden
+library(igraph)
+library(tidygraph)
+
+# Einlesen der Edge- und Nodelist
+edges <- read.csv("https://raw.githubusercontent.com/johannasturm/Netzwerk-N-he-zur-Macht/refs/heads/main/edgelist.csv", header=T, as.is=T, sep = ",")
+
+nodes <- read.csv("https://raw.githubusercontent.com/johannasturm/Netzwerk-N-he-zur-Macht/refs/heads/main/nodelist.csv", header=T, as.is=T, sep = ",")
+
+# Matrix erstellen
+edgematrix <-as.matrix(edges)
+
+# Zusammenführen von Edge- und Nodelist als igraph-Objekt sp
+k <- graph_from_data_frame(d=edgematrix, vertices=nodes, directed=F)
+
+# Wandelt igraph in tibble um
+k <- as_tbl_graph(k)
+
+# Aufrufen der Netzwerks lp (Leibniz-Preis) 
+k
+
+
+
+# Visualisierung 
+
+plot(k, 
+  asp = 0,
+  layout = layout_nicely,
+  main = "Regierungspressesprechernetzwerk", 
+  vertex.color = c("red", "blue")[V(k)$type],
+  vertex.label.cex = 0.6,       
+  vertex.label.dist = 1.5,      
+  vertex.label.color = "black"  
+)
+
+```
+
+
+```{r Visualisierung}
+
+plot (k, 
+      main="Regierungssprechernetzwerk")
+
+```
+
+
